@@ -1,27 +1,37 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { END } from 'redux-saga';
+import { useSelector } from 'react-redux';
 
-import { searchData } from '../actions';
-import { wrapper } from '../store';
+import Card from '../components/Card';
+import Search from '../components/Search';
+
+/* import { END } from 'redux-saga';
+import { wrapper } from '../store'; */
 
 const Index = () => {
-  const dispatch = useDispatch();
+  const searchResults = useSelector((state) => state.searchResults);
+  console.log(searchResults);
 
-  useEffect(() => {
-    dispatch(searchData('harry potter'));
-  }, [dispatch]);
-
-  return <div className='text-red-600'>hi</div>;
+  return (
+    <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div class='flex justify-center mt-6'>
+        <Search />
+      </div>
+      <div className='grid max-w-lg gap-5 mx-auto mt-12 md:grid-cols-3 lg:grid-cols-5 lg:max-w-none'>
+        {searchResults?.map((show) => (
+          <Card key={show.imdbID} show={show} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
-export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
-  if (!store.getState().data) {
-    store.dispatch(searchData('harry potter'));
+/* export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
+  if (!store.getState()?.searchResults) {
+    store.dispatch(searchData(''));
     store.dispatch(END);
   }
 
   await store.sagaTask.toPromise();
-});
+}); */
 
 export default Index;

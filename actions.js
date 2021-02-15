@@ -16,9 +16,9 @@ export function searchData(term) {
   return { type: actionTypes.SEARCH_DATA, term };
 }
 
-export function searchDataSuccess(data) {
+export function searchDataSuccess(searchResults) {
   return {
     type: actionTypes.SEARCH_DATA_SUCCESS,
-    data,
+    searchResults,
   };
 }

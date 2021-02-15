@@ -4,11 +4,10 @@ import { actionTypes, failure, searchDataSuccess } from './actions';
 import omdb from './api/omdb';
 
 function* searchData({ term }) {
-  console.log(term);
   try {
-    const res = yield omdb.get('', { params: { t: term } });
-    console.log(res.data);
-    yield put(searchDataSuccess(res.data));
+    const res = yield omdb.get('', { params: { s: term } });
+    console.log(res.data.Search);
+    yield put(searchDataSuccess(res.data.Search));
   } catch (err) {
     yield put(failure(err));
   }

@@ -5,7 +5,7 @@ import { actionTypes } from './actions';
 const initialState = {
   error: false,
   loading: false,
-  data: null,
+  searchResults: null,
 };
 
 function reducer(state = initialState, action) {
@@ -23,7 +23,7 @@ function reducer(state = initialState, action) {
     case actionTypes.SEARCH_DATA_SUCCESS:
       return {
         ...state,
-        ...{ data: action.data },
+        ...{ searchResults: action.searchResults },
       };
 
     default:
