@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "next": "latest",
     "next-redux-wrapper": "^6.0.2",
     "react": "17.0.1",
