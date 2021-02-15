@@ -6,6 +6,7 @@ const initialState = {
   error: false,
   loading: false,
   searchResults: null,
+  fetchedShow: null,
 };
 
 function reducer(state = initialState, action) {
@@ -24,6 +25,12 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         ...{ searchResults: action.searchResults },
+      };
+
+    case actionTypes.FETCH_SHOW_SUCCESS:
+      return {
+        ...state,
+        ...{ fetchedShow: action.fetchedShow },
       };
 
     default:

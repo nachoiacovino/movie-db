@@ -1,6 +1,6 @@
-import { all, put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 
-import { actionTypes, failure, searchDataSuccess } from './actions';
+import { actionTypes, failure, fetchShowSuccess, searchDataSuccess } from './actions';
 import omdb from './api/omdb';
 
 function* searchData({ term }) {
@@ -13,8 +13,19 @@ function* searchData({ term }) {
   }
 }
 
+function* fetchShow({ imdbId }) {
+  try {
+    const res = yield omdb.get('', { params: { i: imdbId } });
+    console.log(res.data);
+    yield put(fetchShowSuccess(res.data));
+  } catch (err) {
+    yield put(failure(err));
+  }
+}
+
 function* rootSaga() {
-  yield all([takeLatest(actionTypes.SEARCH_DATA, searchData)]);
+  yield takeLatest(actionTypes.FETCH_SHOW, fetchShow);
+  yield takeLatest(actionTypes.SEARCH_DATA, searchData);
 }
 
 export default rootSaga;
