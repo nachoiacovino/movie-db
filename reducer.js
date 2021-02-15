@@ -25,12 +25,14 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         ...{ searchResults: action.searchResults },
+        ...{ error: null },
       };
 
     case actionTypes.FETCH_SHOW_SUCCESS:
       return {
         ...state,
         ...{ fetchedShow: action.fetchedShow },
+        ...{ error: null },
       };
 
     default:

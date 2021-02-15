@@ -7,7 +7,8 @@ function* searchData({ term }) {
   try {
     const res = yield omdb.get('', { params: { s: term } });
     console.log(res.data.Search);
-    yield put(searchDataSuccess(res.data.Search));
+    if (res.data.Error) yield put(failure(res.data.Error));
+    else yield put(searchDataSuccess(res.data.Search));
   } catch (err) {
     yield put(failure(err));
   }
@@ -17,7 +18,8 @@ function* fetchShow({ imdbId }) {
   try {
     const res = yield omdb.get('', { params: { i: imdbId } });
     console.log(res.data);
-    yield put(fetchShowSuccess(res.data));
+    if (res.data.Error) yield put(failure(res.data.Error));
+    else yield put(fetchShowSuccess(res.data));
   } catch (err) {
     yield put(failure(err));
   }
