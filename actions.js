@@ -1,12 +1,7 @@
 export const actionTypes = {
   FAILURE: 'FAILURE',
-  INCREMENT: 'INCREMENT',
-  DECREMENT: 'DECREMENT',
-  RESET: 'RESET',
-  LOAD_DATA: 'LOAD_DATA',
-  LOAD_DATA_SUCCESS: 'LOAD_DATA_SUCCESS',
-  START_CLOCK: 'START_CLOCK',
-  TICK_CLOCK: 'TICK_CLOCK',
+  SEARCH_DATA: 'SEARCH_DATA',
+  SEARCH_DATA_SUCCESS: 'SEARCH_DATA_SUCCESS',
   HYDRATE: 'HYDRATE',
 };
 
@@ -17,37 +12,13 @@ export function failure(error) {
   };
 }
 
-export function increment() {
-  return { type: actionTypes.INCREMENT };
+export function searchData(term) {
+  return { type: actionTypes.SEARCH_DATA, term };
 }
 
-export function decrement() {
-  return { type: actionTypes.DECREMENT };
-}
-
-export function reset() {
-  return { type: actionTypes.RESET };
-}
-
-export function loadData() {
-  return { type: actionTypes.LOAD_DATA };
-}
-
-export function loadDataSuccess(data) {
+export function searchDataSuccess(data) {
   return {
-    type: actionTypes.LOAD_DATA_SUCCESS,
+    type: actionTypes.SEARCH_DATA_SUCCESS,
     data,
-  };
-}
-
-export function startClock() {
-  return { type: actionTypes.START_CLOCK };
-}
-
-export function tickClock(isServer) {
-  return {
-    type: actionTypes.TICK_CLOCK,
-    light: !isServer,
-    ts: Date.now(),
   };
 }
