@@ -1,3 +1,5 @@
+import '../styles/globals.css';
+
 import { wrapper } from '../store';
 
 function App({ Component, pageProps }) {

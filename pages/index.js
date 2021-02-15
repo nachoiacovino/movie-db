@@ -12,7 +12,7 @@ const Index = () => {
     dispatch(searchData('harry potter'));
   }, [dispatch]);
 
-  return <div></div>;
+  return <div className='text-red-600'>hi</div>;
 };
 
 export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
