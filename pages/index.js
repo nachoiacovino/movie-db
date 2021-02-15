@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { END } from 'redux-saga';
 
-import { loadData, startClock, tickClock } from '../actions';
+import { loadData, tickClock } from '../actions';
 import Page from '../components/page';
 import { wrapper } from '../store';
 
@@ -10,7 +10,7 @@ const Index = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(startClock());
+    /* dispatch(startClock()); */
   }, [dispatch]);
 
   return <Page title='Index Page' linkTo='/other' NavigateTo='Other Page' />;

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
-import Clock from './clock';
 import Counter from './counter';
 
 function Page({ linkTo, NavigateTo, title }) {
@@ -12,7 +11,6 @@ function Page({ linkTo, NavigateTo, title }) {
   return (
     <div>
       <h1>{title}</h1>
-      <Clock lastUpdate={lastUpdate} light={light} />
       <Counter />
       <nav>
         <Link href={linkTo}>

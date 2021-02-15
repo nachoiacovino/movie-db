@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { startClock, tickClock } from '../actions';
+import { tickClock } from '../actions';
 import Page from '../components/page';
 import { wrapper } from '../store';
 
@@ -9,7 +9,7 @@ const Other = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(startClock());
+    /* dispatch(startClock()); */
   }, [dispatch]);
 
   return <Page title='Other Page' linkTo='/' NavigateTo='Index Page' />;
