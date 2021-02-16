@@ -44,29 +44,29 @@ const playlists = () => {
                 </button>
               </li>
             ))}
-            <li
-              className='list-none border border-gray-300 p-3 flex justify-between md:w-96 cursor-pointer hover:underline'
-              onClick={() => setShowForm(!showForm)}
-            >
-              <h3>Add playlist</h3>
-              <svg
-                className='w-5 h-5'
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d={showForm ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'}
-                />
-              </svg>
-            </li>
-            {showForm && <PlaylistForm />}
           </ul>
         )}
+        <div
+          className='list-none border border-gray-300 p-3 flex justify-between md:w-96 cursor-pointer hover:underline'
+          onClick={() => setShowForm(!showForm)}
+        >
+          <h3>Add playlist</h3>
+          <svg
+            className='w-5 h-5'
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth={2}
+              d={showForm ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'}
+            />
+          </svg>
+        </div>
+        {showForm && <PlaylistForm />}
       </div>
     </div>
   );
