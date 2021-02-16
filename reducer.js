@@ -10,6 +10,8 @@ const initialState = {
   fetchedShow: null,
   playlists: [
     { name: 'test', id: '4c133dba-3253-4425-90dc-8bbb0e6a0e0e', shows: [] },
+    { name: 'test2', id: '4c133dba-3253-4425-90dc-8bbb0e6a1212', shows: [] },
+    { name: 'test5', id: '4c133dba-3253-4425-90dc-8bbb0e6aasas', shows: [] },
   ],
 };
 

@@ -1,17 +1,19 @@
 /* import Image from 'next/image'; */
+import clsx from 'clsx';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addShowToPlaylist, fetchShow } from '../../actions';
 
 const ShowDetail = () => {
+  const [showAdd, setShowAdd] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
+  const playlists = useSelector((state) => state.playlists);
   const show = useSelector((state) => state.fetchedShow);
   const { slug } = router.query;
-
-  console.log(slug);
 
   useEffect(() => {
     dispatch(fetchShow(slug));
@@ -51,23 +53,92 @@ const ShowDetail = () => {
         <p>{show.Plot}</p>
         <ul className='flex space-x-2.5 mt-2 mb-4'>
           {show.Genre.split(',').map((genre) => (
-            <li className='list-none p-1.5 border-gray-300 border rounded-xl'>
+            <li
+              key={genre}
+              className='list-none p-1.5 border-gray-300 border rounded-xl'
+            >
               {genre}
             </li>
           ))}
         </ul>
-        <button
-          onClick={() =>
-            dispatch(
-              addShowToPlaylist({
-                playlistId: '4c133dba-3253-4425-90dc-8bbb0e6a0e0e',
-                showId: show.imdbID,
-              }),
-            )
-          }
-        >
-          Add show to playlist
-        </button>
+        <div className='mb-4 cursor-pointer md:w-96'>
+          <button
+            onClick={() => setShowAdd(!showAdd)}
+            className={clsx(
+              showAdd && 'border-b-0',
+              'list-none border border-gray-300 p-3 flex justify-between w-full',
+            )}
+          >
+            <span>Add show to playlist</span>
+            <svg
+              className='w-7 h-7'
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d={showAdd ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'}
+              />
+            </svg>
+          </button>
+          {showAdd && (
+            <ul className='mb-4'>
+              {playlists.map((playlist) => (
+                <li
+                  key={playlist.id}
+                  className='list-none border border-gray-300 p-3 flex justify-between border-b-0 md:w-96'
+                  onClick={() =>
+                    dispatch(
+                      addShowToPlaylist({
+                        playlistId: playlist.id,
+                        showId: show.imdbID,
+                      }),
+                    )
+                  }
+                >
+                  <span>{playlist.name}</span>
+                  <svg
+                    className='w-7 h-7'
+                    xmlns='http://www.w3.org/2000/svg'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2}
+                      d='M12 6v6m0 0v6m0-6h6m-6 0H6'
+                    />
+                  </svg>
+                </li>
+              ))}
+              <Link href='/playlists'>
+                <li className='list-none border border-gray-300 p-3 flex justify-between md:w-96'>
+                  <span>Create new playlist</span>
+                  <svg
+                    className='w-7 h-7'
+                    xmlns='http://www.w3.org/2000/svg'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2}
+                      d='M9 5l7 7-7 7'
+                    />
+                  </svg>
+                </li>
+              </Link>
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   );
