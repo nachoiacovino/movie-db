@@ -1,7 +1,7 @@
 import { createWrapper } from 'next-redux-wrapper';
 import { applyMiddleware, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
-import { persistReducer } from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import createSagaMiddleware from 'redux-saga';
 
@@ -17,13 +17,16 @@ const bindMiddleware = (middleware) => {
   return applyMiddleware(...middleware);
 };
 
-const persistConfig = { key: 'root', storage, whitelist: ['user'] };
-
-const reducer = persistReducer(persistConfig, rootReducer);
+const persistConfig = { key: 'root', storage };
 
 export const makeStore = (context) => {
   const sagaMiddleware = createSagaMiddleware();
-  const store = createStore(reducer, bindMiddleware([sagaMiddleware]));
+  const store = createStore(
+    persistReducer(persistConfig, rootReducer),
+    bindMiddleware([sagaMiddleware]),
+  );
+
+  store.__PERSISTOR = persistStore(store);
 
   store.sagaTask = sagaMiddleware.run(rootSaga);
 
