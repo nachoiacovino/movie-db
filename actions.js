@@ -67,6 +67,6 @@ export const addReview = (payload) => ({
 });
 
 export const deleteReview = (reviewId) => ({
-  type: type,
+  type: actionTypes.DELETE_REVIEW,
   reviewId,
 });

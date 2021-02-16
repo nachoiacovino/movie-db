@@ -131,6 +131,16 @@ function reducer(state = initialState, action) {
         },
       };
 
+    case actionTypes.DELETE_REVIEW:
+      return {
+        ...state,
+        ...{
+          reviews: state.reviews.filter(
+            (review) => review.id !== action.reviewId,
+          ),
+        },
+      };
+
     default:
       return state;
   }
