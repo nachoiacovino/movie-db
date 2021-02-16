@@ -39,18 +39,13 @@ You will also see any lint errors in the console.
 ## Summary questions
 
 - What were the most difficult tasks?
-
-The last part, in which I built the details playlist page, I had to reuse a function in my sagas and create a loop to create a new array on my store to have more info on each show in the playlist.
+  In the last part, in which I built the details playlist page, I had to reuse a function in my sagas and create a loop to create a new array on my store to have more info on each show in the playlist.
 
 - Did you learn anything new while completing this assignment?
+  Yes, I had used React with Redux and Redux Saga many times, but never in a Next.js app, so this was a nice first time. In the end, it was really similar, I enjoyed it a lot.
 
-Yes, I had used React with Redux and Redux Saga many times, but never in a Next.js app, so this was a nice first time. At the end, it was really similar, I enjoyed it a lot.
-
-- What did you not have time to add? What work took the up majority of your
-  time?
-
-Exhaustive testing, I belive testing is an important part of every project and it's good to test your app. The majority of my time was spent thinking about how to do the "Add to playlist" and the Playlist detail page, I had to plan it first before starting working on it.
+- What did you not have time to add? What work took the up majority of your time?
+  Exhaustive testing, I believe testing is an important part of every project and it's good to test your app. The majority of my time was spent thinking about how to do the "Add to playlist" and the Playlist detail page, I had to plan it first before starting working on it.
 
 - How could the application be improved?
-
-I would've loved to add more functionality. User auth with a database would be the first thing, then, there's lots that can be done. A profile page in which the user can see their lists and reviews, more info of the show on the detail page, etc.
+  I would've loved to add more functionality. User auth with a database would be the first thing, then, there are lots that can be done. A profile page in which the user can see their lists and reviews, more info of the show on the detail page, etc.
