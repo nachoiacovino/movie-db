@@ -99,27 +99,33 @@ const ShowDetail = () => {
                   <li
                     key={playlist.id}
                     className='list-none border border-gray-300 p-3 flex justify-between border-b-0 md:w-96'
-                    onClick={() => handleAddDelete(playlist, show.imdbID)}
                   >
-                    <span>{playlist.name}</span>
-                    <svg
-                      className='w-7 h-7'
-                      xmlns='http://www.w3.org/2000/svg'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      stroke='currentColor'
+                    <Link href={`/playlists/${playlist.id}`}>
+                      <a className='hover:underline'>{playlist.name}</a>
+                    </Link>
+                    <button
+                      type='button'
+                      onClick={() => handleAddDelete(playlist, show.imdbID)}
                     >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth={2}
-                        d={
-                          !playlist.shows.includes(show.imdbID)
-                            ? 'M12 6v6m0 0v6m0-6h6m-6 0H6'
-                            : 'M5 13l4 4L19 7'
-                        }
-                      />
-                    </svg>
+                      <svg
+                        className='w-7 h-7'
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d={
+                            !playlist.shows.includes(show.imdbID)
+                              ? 'M12 6v6m0 0v6m0-6h6m-6 0H6'
+                              : 'M5 13l4 4L19 7'
+                          }
+                        />
+                      </svg>
+                    </button>
                   </li>
                 ))}
                 <Link href='/playlists'>
