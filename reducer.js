@@ -63,7 +63,6 @@ function reducer(state = initialState, action) {
       };
 
     case actionTypes.ADD_SHOW_TO_PLAYLIST:
-      console.log(action);
       return {
         ...state,
         ...{
@@ -72,6 +71,23 @@ function reducer(state = initialState, action) {
               ? {
                   ...playlist,
                   shows: [...playlist.shows, action.showAndPlaylist.showId],
+                }
+              : playlist,
+          ),
+        },
+      };
+
+    case actionTypes.DELETE_SHOW_FROM_PLAYLIST:
+      return {
+        ...state,
+        ...{
+          playlists: state.playlists.map((playlist) =>
+            playlist.id === action.showAndPlaylist.playlistId
+              ? {
+                  ...playlist,
+                  shows: playlist.shows.filter(
+                    (showId) => showId !== action.showAndPlaylist.showId,
+                  ),
                 }
               : playlist,
           ),

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addShowToPlaylist, fetchShow } from '../../actions';
+import { addShowToPlaylist, deleteShowFromPlaylist, fetchShow } from '../../actions';
 
 const ShowDetail = () => {
   const [showAdd, setShowAdd] = useState(false);
@@ -14,6 +14,27 @@ const ShowDetail = () => {
   const playlists = useSelector((state) => state.playlists);
   const show = useSelector((state) => state.fetchedShow);
   const { slug } = router.query;
+
+  const handleAddDelete = (playlist, showId) => {
+    console.log(playlist.shows);
+    console.log(showId);
+    console.log(playlist.shows.includes(showId));
+    if (!playlist.shows.includes(showId)) {
+      dispatch(
+        addShowToPlaylist({
+          playlistId: playlist.id,
+          showId,
+        }),
+      );
+    } else {
+      dispatch(
+        deleteShowFromPlaylist({
+          playlistId: playlist.id,
+          showId,
+        }),
+      );
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchShow(slug));
@@ -91,14 +112,7 @@ const ShowDetail = () => {
                 <li
                   key={playlist.id}
                   className='list-none border border-gray-300 p-3 flex justify-between border-b-0 md:w-96'
-                  onClick={() =>
-                    dispatch(
-                      addShowToPlaylist({
-                        playlistId: playlist.id,
-                        showId: show.imdbID,
-                      }),
-                    )
-                  }
+                  onClick={() => handleAddDelete(playlist, show.imdbID)}
                 >
                   <span>{playlist.name}</span>
                   <svg
@@ -112,7 +126,11 @@ const ShowDetail = () => {
                       strokeLinecap='round'
                       strokeLinejoin='round'
                       strokeWidth={2}
-                      d='M12 6v6m0 0v6m0-6h6m-6 0H6'
+                      d={
+                        !playlist.shows.includes(show.imdbID)
+                          ? 'M12 6v6m0 0v6m0-6h6m-6 0H6'
+                          : 'M5 13l4 4L19 7'
+                      }
                     />
                   </svg>
                 </li>
