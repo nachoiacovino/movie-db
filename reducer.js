@@ -8,6 +8,7 @@ const initialState = {
   loading: false,
   searchResults: null,
   fetchedShow: null,
+  fetchedPlaylist: [],
   playlists: [
     { name: 'test', id: '4c133dba-3253-4425-90dc-8bbb0e6a0e0e', shows: [] },
     { name: 'test2', id: '4c133dba-3253-4425-90dc-8bbb0e6a1212', shows: [] },
@@ -57,6 +58,13 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         ...{ fetchedShow: action.fetchedShow },
+        ...{ error: null },
+      };
+
+    case actionTypes.FETCH_PLAYLIST_SUCCESS:
+      return {
+        ...state,
+        ...{ fetchedPlaylist: action.fetchedPlaylist },
         ...{ error: null },
       };
 

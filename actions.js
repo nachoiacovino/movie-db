@@ -11,6 +11,8 @@ export const actionTypes = {
   DELETE_SHOW_FROM_PLAYLIST: 'DELETE_SHOW_FROM_PLAYLIST',
   ADD_REVIEW: 'ADD_REVIEW',
   DELETE_REVIEW: 'DELETE_REVIEW',
+  FETCH_PLAYLIST: 'FETCH_PLAYLIST',
+  FETCH_PLAYLIST_SUCCESS: 'FETCH_PLAYLIST_SUCCESS',
 };
 
 export function failure(error) {
@@ -69,4 +71,14 @@ export const addReview = (payload) => ({
 export const deleteReview = (reviewId) => ({
   type: actionTypes.DELETE_REVIEW,
   reviewId,
+});
+
+export const fetchPlaylist = (playlist) => ({
+  type: actionTypes.FETCH_PLAYLIST,
+  playlist,
+});
+
+export const fetchPlaylistSuccess = (fetchedPlaylist) => ({
+  type: actionTypes.FETCH_PLAYLIST_SUCCESS,
+  fetchedPlaylist,
 });

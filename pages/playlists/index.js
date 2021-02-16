@@ -1,8 +1,9 @@
+import Link from 'next/link';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { deletePlaylist } from '../actions';
-import PlaylistForm from '../components/PlaylistForm';
+import { deletePlaylist } from '../../actions';
+import PlaylistForm from '../../components/PlaylistForm';
 
 const playlists = () => {
   const [showForm, setShowForm] = useState(false);
@@ -20,9 +21,11 @@ const playlists = () => {
                 key={playlist.id}
                 className='list-none border border-gray-300 p-3 flex justify-between border-b-0 md:w-96'
               >
-                <h3 className='hover:underline cursor-pointer'>
-                  {playlist.name}
-                </h3>
+                <Link href={`/playlists/${playlist.id}`}>
+                  <h3 className='hover:underline cursor-pointer'>
+                    {playlist.name}
+                  </h3>
+                </Link>
                 <button onClick={() => dispatch(deletePlaylist(playlist.id))}>
                   <svg
                     className='w-5 h-5'

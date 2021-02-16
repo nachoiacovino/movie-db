@@ -60,7 +60,7 @@ const ShowDetail = () => {
           </div>
           <p>{show.Plot}</p>
           <ul className='flex space-x-2.5 mt-2 mb-4'>
-            {show.Genre.split(',').map((genre) => (
+            {show.Genre?.split(',').map((genre) => (
               <li
                 key={genre}
                 className='list-none p-1.5 border-gray-300 border rounded-xl'
