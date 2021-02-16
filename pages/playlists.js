@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addPlaylist } from '../actions';
+import { addPlaylist, deletePlaylist } from '../actions';
 
 const playlists = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,12 @@ const playlists = () => {
         {playlists.length > 0 && (
           <ul>
             {playlists.map((playlist) => (
-              <li>{playlist.name}</li>
+              <li className='flex'>
+                <h3>{playlist.name}</h3>
+                <button onClick={() => dispatch(deletePlaylist(playlist.id))}>
+                  Delete playlist
+                </button>
+              </li>
             ))}
           </ul>
         )}
