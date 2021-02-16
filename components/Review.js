@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import Rating from './Rating';
+import ReviewForm from './ReviewForm';
 
 const Review = ({ showId }) => {
   const reviews = useSelector((state) =>
@@ -22,8 +23,9 @@ const Review = ({ showId }) => {
                 <p>{review.text}</p>
               </div>
             ))
-          : 'There are no reviews yet, be the first!'}
+          : 'There are no reviews yet, be the first to add one!'}
       </div>
+      <ReviewForm showId={showId} />
     </div>
   );
 };
