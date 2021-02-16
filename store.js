@@ -1,7 +1,7 @@
 import { createWrapper } from 'next-redux-wrapper';
 import { applyMiddleware, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
-import { persistReducer, persistStore } from 'redux-persist';
+import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import createSagaMiddleware from 'redux-saga';
 
@@ -26,7 +26,7 @@ export const makeStore = (context) => {
     bindMiddleware([sagaMiddleware]),
   );
 
-  store.__PERSISTOR = persistStore(store);
+  /*   store.__PERSISTOR = persistStore(store); */
 
   store.sagaTask = sagaMiddleware.run(rootSaga);
 
