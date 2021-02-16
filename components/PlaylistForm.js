@@ -32,7 +32,7 @@ const ReviewForm = () => {
       >
         Add
       </button>
-      <p class='text-xs flex justify-center'>My favorite color is blue</p>
+      <p className='text-xs flex justify-center'>My favorite color is blue</p>
     </form>
   );
 };
