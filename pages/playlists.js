@@ -16,7 +16,7 @@ const playlists = () => {
         {playlists.length > 0 && (
           <ul>
             {playlists.map((playlist) => (
-              <li className='flex'>
+              <li key={playlist.id} className='flex'>
                 <h3>{playlist.name}</h3>
                 <button onClick={() => dispatch(deletePlaylist(playlist.id))}>
                   Delete playlist
