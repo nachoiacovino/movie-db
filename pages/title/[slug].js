@@ -136,7 +136,7 @@ const ShowDetail = () => {
                         strokeLinecap='round'
                         strokeLinejoin='round'
                         strokeWidth={2}
-                        d='M9 5l7 7-7 7'
+                        d={showAdd ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'}
                       />
                     </svg>
                   </li>
