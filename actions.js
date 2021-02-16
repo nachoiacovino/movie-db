@@ -60,3 +60,13 @@ export const deleteShowFromPlaylist = (showAndPlaylist) => ({
   type: actionTypes.DELETE_SHOW_FROM_PLAYLIST,
   showAndPlaylist,
 });
+
+export const addReview = (payload) => ({
+  type: actionTypes.ADD_REVIEW,
+  payload,
+});
+
+export const deleteReview = (reviewId) => ({
+  type: type,
+  reviewId,
+});

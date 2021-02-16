@@ -1,14 +1,21 @@
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
+import { addReview } from '../actions';
 
 const ReviewForm = ({ showId }) => {
-  const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
+  const { register, handleSubmit, reset } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    dispatch(addReview({ ...data, showId }));
+    reset();
+  };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className='flex flex-col space-y-1.5 md:w-96'
+      className='flex flex-col space-y-1.5 md:w-6/12'
     >
       <h5 className='font-semibold text-lg my-2 '>Add a review</h5>
       <input

@@ -113,6 +113,24 @@ function reducer(state = initialState, action) {
         },
       };
 
+    case actionTypes.ADD_REVIEW:
+      return {
+        ...state,
+        ...{
+          reviews: [
+            ...state.reviews,
+            {
+              id: uuidv4(),
+              showId: action.payload.showId,
+              title: action.payload.title,
+              text: action.payload.text,
+              author: action.payload.author,
+              rating: action.payload.rating,
+            },
+          ],
+        },
+      };
+
     default:
       return state;
   }
