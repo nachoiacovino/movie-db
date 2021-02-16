@@ -9,30 +9,8 @@ const initialState = {
   searchResults: null,
   fetchedShow: null,
   fetchedPlaylist: [],
-  playlists: [
-    { name: 'test', id: '4c133dba-3253-4425-90dc-8bbb0e6a0e0e', shows: [] },
-    { name: 'test2', id: '4c133dba-3253-4425-90dc-8bbb0e6a1212', shows: [] },
-    { name: 'test5', id: '4c133dba-3253-4425-90dc-8bbb0e6aasas', shows: [] },
-  ],
-  reviews: [
-    {
-      showId: 'tt4154796',
-      id: '4c133dba-3253-4425-90dc-8bbb0e6a0e0e',
-      title: 'A masterpiece',
-      text: 'Nice movie!',
-      author: 'Nacho',
-      rating: 9,
-    },
-    {
-      showId: 'tt4154796',
-      id: '4c133dba-3253-4425-90dc-8bbb0e6asasas',
-      title: 'Incredible movie',
-      text:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium sit harum repellendus magnam a quibusdam sed vel. Recusandae ut alias aperiam voluptatum illum quae. Corporis quis officiis ducimus illum. Nam corporis harum aliquam nesciunt quos ea quisquam repudiandae ullam, hic ex eius architecto praesentium quas blanditiis, sit suscipit fuga officia.!',
-      author: 'Fanboy',
-      rating: 10,
-    },
-  ],
+  playlists: [],
+  reviews: [],
 };
 
 function reducer(state = initialState, action) {
