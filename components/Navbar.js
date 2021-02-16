@@ -70,27 +70,18 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      {/*
-    Mobile menu, toggle classes based on menu state.
-
-    Menu open: "block", Menu closed: "hidden"
-  */}
       <div className={clsx(!isOpen && 'hidden', 'lg:hidden')}>
         <div className='pt-2 pb-3 space-y-1'>
-          {/* Current: "bg-indigo-50 border-black text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" */}
-          <a
-            href='#'
-            className='bg-gray-100 border-black text-black block pl-3 pr-4 py-2 border-l-4 text-base font-medium'
-          >
-            Home
-          </a>
-          <a
-            href='#'
-            className='border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium'
-          >
-            Playlists
-          </a>
+          <Link href='/'>
+            <a className='border-black border-l-4 bg-gray-100 text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium'>
+              Home
+            </a>
+          </Link>
+          <Link href='/playlists'>
+            <a className='border-black border-l-4 bg-gray-100 text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium'>
+              Playlists
+            </a>
+          </Link>
         </div>
       </div>
     </nav>
