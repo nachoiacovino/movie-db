@@ -1,41 +1,56 @@
-# redux-saga example
+# Movie-DB
 
-Usually splitting your app state into `pages` feels natural, but sometimes you'll want to have global state for your app. This is an example using `redux` and `redux-saga` that works with universal rendering. This is just one way it can be done. If you have any suggestions or feedback please submit an issue or PR.
+You can see a live version of this project [here](https://movie-db-psi.vercel.app/).
 
-> This example and documentation is based on the [with-redux](https://github.com/vercel/next.js/tree/master/examples/with-redux) example.
+In this app, you can search for shows and they will render into beautiful cards. You can click on any of the card to go to the details page.
 
-## Deploy your own
+On the details page, you can see more info about the show, add it to a playlist or leave a review.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+On the playlists page, you can see your playlists, delete them or add a new one.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-redux-saga&project-name=with-redux-saga&repository-name=with-redux-saga)
+If you click on any of the playlists, you can see a details page with all the shows added to that playlist.
 
-## How to use
+The app was built with Next 10, React 17 with hooks, Redux (also with hooks) and Redux Saga.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+For styles it uses Tailwind CSS.
 
-```bash
-npx create-next-app --example with-redux-saga with-redux-saga-app
-# or
-yarn create next-app --example with-redux-saga with-redux-saga-app
-```
+For the API requests, it uses Axios.
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## Available Scripts
 
-## Notes
+In your console, first you need to clone the repository
 
-In the first example we are going to display a digital clock that updates every second. The first render is happening in the server and then the browser will take over. To illustrate this, the server rendered clock will have a different background color than the client one.
+### `git clone https://github.com/nachoiacovino/movie-db.git`
 
-![](https://i.imgur.com/JCxtWSj.gif)
+After that, you need install the dependencies with:
 
-Our page is located at `pages/index.js` so it will map the route `/`. To get the initial data for rendering we are implementing the static method `getInitialProps`, initializing the redux store and dispatching the required actions until we are ready to return the initial state to be rendered. Since the component is wrapped with `next-redux-wrapper`, the component is automatically connected to Redux and wrapped with `react-redux Provider`, that allows us to access redux state immediately and send the store down to children components so they can access to the state when required.
+### `npm install`
 
-For safety it is recommended to wrap all pages, no matter if they use Redux or not, so that you should not care about it anymore in all child components.
+Then, you can launch the server with:
 
-`withRedux` function accepts `makeStore` as first argument, all other arguments are internally passed to `react-redux connect()` function. `makeStore` should return a new instance of redux store each time when called, no memoization needed here. See the [full example](https://github.com/kirill-konshin/next-redux-wrapper#usage) in the Next Redux Wrapper repository.
+### `npm run dev`
 
-The trick here for supporting universal redux is to separate the cases for the client and the server. When we are on the server we want to create a new store every time, otherwise different users data will be mixed up. If we are in the client we want to use always the same store and hydrate it when needed. That's what we accomplish in `store.js`
+This runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The clock, under `components/clock.js`, has access to the state using the `connect` function from `react-redux`. In this case Clock is a direct child from the page but it could be deep down the render tree.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-The second example, under `components/counter.js`, shows a simple add counter function with a class component implementing a common redux pattern of mapping state and props. Again, the first render is happening in the server and instead of starting the count at 0, it will dispatch an action in redux that starts the count at 1. This continues to highlight how each navigation triggers a server render first and then a client render second, when you navigate between pages.
+## Summary questions
+
+- What were the most difficult tasks?
+
+The last part, in which I built the details playlist page, I had to reuse a function in my sagas and create a loop to create a new array on my store to have more info on each show in the playlist.
+
+- Did you learn anything new while completing this assignment?
+
+Yes, I had used React with Redux and Redux Saga many times, but never in a Next.js app, so this was a nice first time. At the end, it was really similar, I enjoyed it a lot.
+
+- What did you not have time to add? What work took the up majority of your
+  time?
+
+Exhaustive testing, I belive testing is an important part of every project and it's good to test your app. The majority of my time was spent thinking about how to do the "Add to playlist" and the Playlist detail page, I had to plan it first before starting working on it.
+
+- How could the application be improved?
+
+I would've loved to add more functionality. User auth with a database would be the first thing, then, there's lots that can be done. A profile page in which the user can see their lists and reviews, more info of the show on the detail page, etc.
