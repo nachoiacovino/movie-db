@@ -13,7 +13,6 @@ const PlaylistDetail = () => {
     state.playlists.find((playlist) => playlist.id === slug),
   );
   const fetchedPlaylist = useSelector((state) => state.fetchedPlaylist);
-  /*   const [playlistShows, setPlaylistShows] = useState(playlist.shows); */
 
   useEffect(() => {
     console.log(playlist);
@@ -25,11 +24,18 @@ const PlaylistDetail = () => {
   return (
     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4'>
       <h1 className='text-4xl font-bold'>{fetchedPlaylist.name}</h1>
-      <div className='grid max-w-lg gap-5 mx-auto mt-8 md:grid-cols-3 lg:grid-cols-5 lg:max-w-none mb-6'>
-        {fetchedPlaylist.shows?.map((show) => (
-          <Card key={show.imdbID} show={show} />
-        ))}
-      </div>
+      {fetchedPlaylist.shows.length > 0 ? (
+        <div className='grid max-w-lg gap-5 mx-auto mt-8 md:grid-cols-3 lg:grid-cols-5 lg:max-w-none mb-6'>
+          {fetchedPlaylist.shows.map((show) => (
+            <Card key={show.imdbID} show={show} />
+          ))}
+        </div>
+      ) : (
+        <div class='mt-4'>
+          This looks a little empty, why don't you try adding a show to the
+          playlist?
+        </div>
+      )}
     </div>
   );
 };
