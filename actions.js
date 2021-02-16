@@ -50,11 +50,11 @@ export const deletePlaylist = (playlistId) => ({
 });
 
 export const addShowToPlaylist = (showAndPlaylist) => ({
-  type: type,
+  type: actionTypes.ADD_SHOW_TO_PLAYLIST,
   showAndPlaylist,
 });
 
 export const deleteShowFromPlaylist = (showAndPlaylist) => ({
-  type: type,
+  type: actionTypes.DELETE_SHOW_FROM_PLAYLIST,
   showAndPlaylist,
 });
