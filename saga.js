@@ -17,7 +17,6 @@ function* searchData({ term }) {
 function* fetchShow({ imdbId }) {
   try {
     const res = yield omdb.get('', { params: { i: imdbId } });
-    console.log(res.data);
     if (res.data.Error) yield put(failure(res.data.Error));
     else yield put(fetchShowSuccess(res.data));
   } catch (err) {
