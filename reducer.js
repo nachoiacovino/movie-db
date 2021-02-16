@@ -1,4 +1,5 @@
 import { HYDRATE } from 'next-redux-wrapper';
+import { v4 as uuidv4 } from 'uuid';
 
 import { actionTypes } from './actions';
 
@@ -7,6 +8,7 @@ const initialState = {
   loading: false,
   searchResults: null,
   fetchedShow: null,
+  playlists: [],
 };
 
 function reducer(state = initialState, action) {
@@ -33,6 +35,27 @@ function reducer(state = initialState, action) {
         ...state,
         ...{ fetchedShow: action.fetchedShow },
         ...{ error: null },
+      };
+
+    case actionTypes.ADD_PLAYLIST:
+      return {
+        ...state,
+        ...{
+          playlists: [
+            ...state.playlists,
+            { name: action.playlistName, id: uuidv4(), shows: [] },
+          ],
+        },
+      };
+
+    case actionTypes.DELETE_PLAYLIST:
+      return {
+        ...state,
+        ...{
+          playlists: state.playlists.filter(
+            (playlist) => playlist.id !== action.playlistId,
+          ),
+        },
       };
 
     default:

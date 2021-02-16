@@ -1,10 +1,14 @@
 export const actionTypes = {
+  HYDRATE: 'HYDRATE',
   FAILURE: 'FAILURE',
   SEARCH_DATA: 'SEARCH_DATA',
   SEARCH_DATA_SUCCESS: 'SEARCH_DATA_SUCCESS',
   FETCH_SHOW: 'FETCH_SHOW',
   FETCH_SHOW_SUCCESS: 'FETCH_SHOW_SUCCESS',
-  HYDRATE: 'HYDRATE',
+  ADD_PLAYLIST: 'ADD_PLAYLIST',
+  DELETE_PLAYLIST: 'DELETE_PLAYLIST',
+  ADD_SHOW_TO_PLAYLIST: 'ADD_SHOW_TO_PLAYLIST',
+  DELETE_SHOW_FROM_PLAYLIST: 'DELETE_SHOW_FROM_PLAYLIST',
 };
 
 export function failure(error) {
@@ -33,4 +37,24 @@ export const fetchShow = (imdbId) => ({
 export const fetchShowSuccess = (fetchedShow) => ({
   type: actionTypes.FETCH_SHOW_SUCCESS,
   fetchedShow,
+});
+
+export const addPlaylist = (playlistName) => ({
+  type: actionTypes.ADD_PLAYLIST,
+  playlistName,
+});
+
+export const deletePlaylist = (playlistId) => ({
+  type: actionTypes.DELETE_PLAYLIST,
+  playlistId,
+});
+
+export const addShowToPlaylist = (showAndPlaylist) => ({
+  type: type,
+  showAndPlaylist,
+});
+
+export const deleteShowFromPlaylist = (showAndPlaylist) => ({
+  type: type,
+  showAndPlaylist,
 });
