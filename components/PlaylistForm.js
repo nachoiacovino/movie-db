@@ -15,7 +15,7 @@ const ReviewForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className='flex flex-col space-y-1.5 md:w-96 border-gray-300 border-t-0 border p-3'
+      className='flex flex-col space-y-1.5 md:w-96 border-gray-300 border-t-0 border p-3 bg-blue-200'
     >
       <input
         className='border border-gray-200 p-2 rounded-md'
@@ -32,6 +32,7 @@ const ReviewForm = () => {
       >
         Add
       </button>
+      <p class='text-xs flex justify-center'>My favorite color is blue</p>
     </form>
   );
 };
